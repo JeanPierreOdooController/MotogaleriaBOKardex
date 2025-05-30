@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+        <record id="view_sale_analysis_book_tree" model="ir.ui.view">
+            <field name="name">sale.analysis.book.tree</field>
+            <field name="model">sale.analysis.book</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Analisis de Ventas" create="false">
+                    <field name="vendedor" optional="show"/>
+                    <!-- <field name="id_user"/> -->
+                    <field name="team_vendor" optional="show"/>
+                    <field name="td_partner" optional="show"/>
+                    <field name="doc_partner" optional="show"/>
+                    <field name="partner" optional="show"/>
+                    <field name="departamento_id" optional="show"/>
+                    <field name="provincia_id" optional="show"/>
+                    <field name="distrito_id" optional="show"/>
+                    <field name="fecha" optional="show"/>
+                    <field name="td_sunat" optional="show"/>
+                    <field name="nro_comprobante" optional="show"/>
+                    <field name="estado_doc" optional="show"/>
+                    <!-- <field name="category_name" optional="show"/> -->
+                    <field name="cat1" optional="show"/>
+                    <field name="default_code" optional="show"/>
+                    <field name="brand" optional="show"/>
+                    <field name="product_id" optional="show"/>
+                    <field name="moneda" optional="show"/>
+                    <field name="quantity" optional="show"/>
+                    <field name="pu_soles" optional="show"/>
+                    <field name="cu_soles" optional="show"/>
+                    <field name="pt_soles" optional="show"/>
+                    <field name="ct_soles" optional="show"/>
+                    <field name="marg_soles" optional="show"/>
+                    <field name="tc" optional="show"/>
+                    <field name="pu_dolar" optional="show"/>
+                    <field name="cu_dolar" optional="show"/>
+                    <field name="pt_dolar" optional="show"/>
+                    <field name="ct_dolar" optional="show"/>
+                    <field name="marg_dolar" optional="show"/>
+                    <field name="nomenclatura" optional="show"/>
+                    <field name="ref_doc" optional="show" string="Ref. Pedido"/>
+                    <field name="plazopago" optional="show"/>
+                    <field name="datedue" optional="show"/>
+                    <field name="lote" optional="show"/>
+                    <field name="move_id" optional="hide"/>
+                    <field name="flag" invisible="1"/>
+						
+    
+       
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_sale_analysis_book_pivot" model="ir.ui.view">
+            <field name="name">sale.analysis.book.pivot</field>
+            <field name="model">sale.analysis.book</field>
+            <field name="arch" type="xml">
+                <pivot string="Analisis de Ventas">
+                    <field name="vendedor" type="row"/>
+                    <field name="td_sunat" type="col"/>
+                    <field name="balance" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="view_sale_analysis_book_graph" model="ir.ui.view">
+            <field name="name">sale.analysis.book.graph</field>
+            <field name="model">sale.analysis.book</field>
+            <field name="arch" type="xml">
+                <graph string="Analisis de Ventas" type="bar" stacked="1">
+                    <field name="vendedor"/>
+                </graph>
+            </field>
+        </record>
+
+        <record id="sale_analysis_book_search" model="ir.ui.view">
+            <field name="name">sale.analysis.book.search</field>
+            <field name="model">sale.analysis.book</field>
+            <field name="arch" type="xml">
+                <search string="Analisis de Ventas">
+                    <field name="partner"/>
+                    <field name="nro_comprobante"/>
+                    <field name="cuenta"/>
+                    <separator/>
+                    <group expand="1" string="Group By...">
+                        <filter string="Partner" name="partner" icon="terp-partner" context="{'group_by':'partner'}"/>
+                        <filter string="Marca" name="brand" icon="terp-partner" context="{'group_by':'brand'}"/>
+                        <filter string="Cuenta" name="cuenta" icon="terp-partner" context="{'group_by':'cuenta'}"/>
+                        <filter string="Nro Comprobante" name="nro_comprobante" icon="terp-partner" context="{'group_by':'nro_comprobante'}"/>
+                        <filter string="Tipo Doc. Factura" name="td_sunat" icon="terp-partner" context="{'group_by':'td_sunat'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <record id="action_sale_analysis_book_it" model="ir.actions.act_window">
+            <field name="name">Analisis de Ventas</field>
+            <field name="res_model">sale.analysis.book</field>
+            <field name="view_id" ref="view_sale_analysis_book_tree"/>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree,pivot,graph</field>
+            <field name="search_view_id" ref="sale_analysis_book_search"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <record id="group_product_template_restriction" model="res.groups">
+            <field name="name">Permite Creacion de Productos</field>            
+            <field name="comment">Grupo que permite crear/modificar/eliminar los Productos.</field>
+        </record>
+
+
+
+        <record model="ir.ui.view" id="product_product_view_form_easy_inherit_stock_hide">
+            <field name="name">product_product_view_form_easy_inherit_stock_hide</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="stock.product_product_view_form_easy_inherit_stock"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_update_quantity_on_hand']" position='attributes'>
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!--
+                <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position='attributes'>
+                -->
+                <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_form_view_procurement_button_ancis">
+            <field name="name">product_form_view_procurement_button_ancis</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="stock.product_form_view_procurement_button"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_update_quantity_on_hand'][1]" position='attributes'>
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//div[@name='button_box']//button[@name='action_update_quantity_on_hand']" position='attributes'>
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!--
+                <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position='attributes'>
+                -->
+                <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_template_form_view_procurement_button_canos">
+            <field name="name">product_template_form_view_procurement_button_canos</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="stock.product_template_form_view_procurement_button"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_update_quantity_on_hand'][1]" position='attributes'>
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//div[@name='button_box']//button[@name='action_update_quantity_on_hand']" position='attributes'>
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!--
+                <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position='attributes'>
+                -->
+                <xpath expr="//button[@name='%(stock.action_product_replenish)d']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

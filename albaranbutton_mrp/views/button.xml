@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="insumostree_nolote" model="ir.ui.view">
+        <field name="name">stock.balance.report.multipleorigin.tree</field>
+        <field name="model">stock.balance.report.multipleorigin</field>
+        <field name="arch" type="xml">
+            <tree string='Movimientos Reservados'>
+                <field name="name"/>
+                <field name="producto"/>
+                <field name="cantidad_pedida"/>
+                <field name="cantidad_reservada"/>
+                <button string="Ver Detallado" name="action_get_pick_op" type="object" class="oe_highlight"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id="insumostree" model="ir.ui.view">
+        <field name="name">stock.balance.report.multipleorigin.tree</field>
+        <field name="model">stock.balance.report.multipleorigin</field>
+        <field name="arch" type="xml">
+            <tree string='Movimientos Reservados'>
+                <field name="name"/>
+                <field name="producto"/>
+                <field name="cantidad_pedida"/>
+                <field name="cantidad_reservada"/>
+                <field name="lote"/>
+                <button string="Ver Detallado" name="action_get_pick_op" type="object" class="oe_highlight"/>
+            </tree>
+        </field>
+    </record>
+    
+
+</odoo>

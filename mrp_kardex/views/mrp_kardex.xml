@@ -1,0 +1,83 @@
+<odoo>
+	<data>
+
+
+		<record model="ir.ui.view" id="move_line_fecha_kardex">
+			<field name="name">stock.move.line.form</field>
+			<field name="model">stock.move.line</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<field name="kardex_date" readonly="0" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+        <record id="group_desbloquear_mrp_it" model="res.groups">
+            <field name="name">Desbloquear Fabricación IT</field>
+        </record>
+
+		<record model="ir.ui.view" id="mrp_production_form_view">
+			<field name="name">mrp.production.form.inherit</field>
+			<field name="model">mrp.production</field>
+			<field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+			<field name="arch" type="xml">
+				<xpath expr="//header" position="inside">
+					<button string="Costear" type="object" name="costeo_mrp" invisible="state !='done'"/>
+				</xpath>
+				<xpath expr="//button[@name='action_toggle_is_locked'][1]" position="attributes">
+                    <attribute name="groups">mrp_kardex.group_desbloquear_mrp_it</attribute>
+                </xpath>
+                <xpath expr="//button[@name='action_toggle_is_locked'][2]" position="attributes">
+                    <attribute name="groups">mrp_kardex.group_desbloquear_mrp_it</attribute>
+                </xpath>
+			</field>
+		</record>
+
+
+
+
+
+
+		<record model="ir.ui.view" id="move_line_no_mostrar">
+			<field name="name">stock.move.line.form</field>
+			<field name="model">stock.move.line</field>
+			<field name="arch" type="xml">
+				<form>
+					<group>
+						<field name="no_mostrar" readonly="0" />
+					</group>
+				</form>
+			</field>
+		</record>
+
+
+		<record model="ir.ui.view" id="view_move_line_tree">
+			<field name="name">stock.move.line.tree.inherit</field>
+			<field name="model">stock.move.line</field>
+			<field name="inherit_id" ref="stock.view_move_line_tree"/>
+			<field name="arch" type="xml">
+				<field name="location_dest_id" position="after">
+					<field name="kardex_date" readonly="1"/>
+					<button name="edit_kardex_date" type="object" string="Fecha" groups="kardex_fisico_it.group_modificar_kardex_fecha"/>
+					<field name="no_mostrar" readonly="1"/>
+					<button name="edit_mostrar_no" type="object" string="Mostrar" groups="kardex_fisico_it.group_modificar_no_mostrar_kardex" />
+				</field>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="stock_valuation_layer_tree">
+			<field name="name">stock.valuation.layer.tree.inherit</field>
+			<field name="model">stock.valuation.layer</field>
+			<field name="inherit_id" ref="stock_account.stock_valuation_layer_tree"/>
+			<field name="arch" type="xml">
+				<field name="value" position="replace">
+					<field name="value" column_invisible="1"/>
+					<field name="price_unit_it" />
+				</field>
+			</field>
+		</record>
+		
+	</data>
+</odoo>

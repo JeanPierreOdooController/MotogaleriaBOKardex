@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_picking_expiration_date_form" model="ir.ui.view">
+           <field name="name">view.picking.expiration.date.form</field>
+           <field name="model">stock.picking</field>
+           <field name="inherit_id" ref="stock.view_picking_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//header" position="inside">
+                    <button name="add_fecha_vencimiento" groups="import_nro_lotes.groupcanimportsaldoinic" invisible="not lotes_file or state != 'done'" string="Importar Fechas Caducidad" type="object" class="oe_highlight"/>
+               </xpath>
+           </field>
+    </record>
+</odoo>

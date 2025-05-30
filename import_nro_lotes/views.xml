@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+        <record id="saldo_inicial_template" model="ir.attachment">
+            <field name="name">saldo_inicial_template.xlsx</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="import_nro_lotes/saldo_inicial_template.xlsx"/>
+        </record>
+
+
+
+        <record id="groupcanimportsaldoinic" model="res.groups">
+            <field name="name">Permiso para Importar Saldos Iniciales</field>
+        </record>
+
+
+
+
+    <record id="view_picking_form" model="ir.ui.view">
+           <field name="name">stock.picking</field>
+           <field name="model">stock.picking</field>
+           <field name="inherit_id" ref="stock.view_picking_form"/>
+           <field name="arch" type="xml">
+               <xpath expr="//notebook" position="inside">
+                    <page invisible="state != 'draft'" string="Importación de Saldos Iniciales" groups="import_nro_lotes.groupcanimportsaldoinic">
+                        <group string="Importar Lotes" invisible="state != 'draft'">
+                                <button class="oe_highlight" name="download_template_iniical" type="object" string="Descargar Plantilla"/>
+                        </group>
+                        <group>
+                            <field name="tipo_import_lot"/>
+                            <field name="lotes_file"/>
+
+                        </group>
+                        <group>
+                                <button class="oe_highlight" name="get_read_lotes" type="object" string="Importar Lineas"/>
+                        </group>
+
+
+
+                    </page>
+               </xpath>
+
+
+               <field name="note" position="after">
+                  <group>
+                    <group>
+                        
+                        <field name="errores_txt" groups="import_nro_lotes.groupcanimportsaldoinic" readonly="1"/>
+                    </group>
+                    <group>
+                    </group>
+                  </group>
+               </field>
+           </field>
+    </record>
+
+
+         
+
+
+</odoo>

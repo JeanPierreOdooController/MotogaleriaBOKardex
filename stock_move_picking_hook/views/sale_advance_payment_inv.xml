@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_sale_advance_payment_inv_inherit" model="ir.ui.view">
+		<field name="name">view.sale.advance.payment.inv.inherit</field>
+		<field name="model">sale.advance.payment.inv</field>
+		<field name="inherit_id" ref="sale.view_sale_advance_payment_inv"/>
+		<field name="arch" type="xml">
+			<field name="advance_payment_method" position="after">
+
+					<field name="picking_ids_compute" invisible="1"/>
+					<field name="picking_ids" invisible="advance_payment_method != 'delivered'" domain="[('id','in',picking_ids_compute)]"/>
+			</field>
+		</field>
+	</record>
+
+
+
+
+                    
+	<record id="purchase_order_form" model="ir.ui.view">
+		<field name="name">purchase.order.form</field>
+		<field name="model">purchase.order</field>
+		<field name="inherit_id" ref="purchase.purchase_order_form"/>
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="//div[@name='button_box']/button[@name='action_view_invoice']" position="replace">
+
+                        <button type="object"  name="action_view_invoice_it"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o" invisible=" invoice_count == 0 or state in ('draft','sent','to approve')">
+                            <field name="invoice_count" widget="statinfo" string="Factura Proveedor"/>
+                            <field name='invoice_ids' invisible="1"/>
+                        </button>
+                </xpath>				
+			</data>
+		</field>
+	</record>
+
+
+
+
+	<record id="view_move_form" model="ir.ui.view">
+		<field name="name">move.form.detractions.inherit.advance</field>
+		<field name="model">account.move</field>
+		<field name="inherit_id" ref="account.view_move_form"/>
+		<field name="arch" type="xml">
+			<data>
+				<xpath expr="//field[@name='move_type'][1]" position="before">
+					<field name="picking_ids" invisible="1"/>
+				</xpath>
+			</data>
+		</field>
+	</record>
+	<record id="view_purchase_advance_payment_inv_inherit" model="ir.ui.view">
+		<field name="name">view.purchase.advance.payment.inv.inherit</field>
+		<field name="model">purchase.advance.payment.inv</field>
+		<field name="arch" type="xml">
+			<form string="Orden de Compra">
+				<group>
+					<field name="picking_ids_compute" invisible="1"/>
+					<field name="picking_ids" domain="[('id','in',picking_ids_compute)]"/>
+
+				</group>	
+				<footer>
+					<button string="Crear Factura" name="create_invoices" type="object" class="oe_highlight"/>
+					or
+					<button string="Cancel" class="oe_link" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">almacen settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//app[@name='stock']" position="inside">
+		    <block title="Guia de Remisión Obligatoria" name="obligatorio_guia_nro">
+                            <setting id="check_nro_guia_obligatorio" company_dependent="1" string="Guia Obligatoria" help="La Guía es obligatoria">
+                                <field name="check_nro_guia_obligatorio"/>
+                            </setting>
+                        </block>
+	    </xpath>
+
+
+
+
+        </field>
+    </record>
+
+
+
+</odoo>

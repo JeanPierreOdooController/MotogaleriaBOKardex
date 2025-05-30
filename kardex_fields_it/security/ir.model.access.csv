@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sql_kardex,sql_kardex,model_sql_kardex,,1,1,1,1
+access_account_period_kardex,account_period_kardex,model_account_period_kardex,,1,1,1,1
+access_kardex_parameter,kardex_parameter,model_kardex_parameter,,1,1,1,1

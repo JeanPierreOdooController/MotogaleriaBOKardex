@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+        <record id="view_make_kardex_valorado" model="ir.ui.view">
+            <field name="name">make.kardex.valorado.form</field>
+            <field name="model">make.kardex.valorado</field>
+            <field name="inherit_id" ref="kardex_valorado_it.view_make_kardex_valorado"/>
+            <field name="arch" type="xml">
+            	<field name="check_fecha" position="after">    
+                        <field name="moneda" invisible="1"/> 
+                        <field name="check_account"/>        		
+            	</field>
+             </field>
+        </record>
+
+
+
+        <record id="make_kardex_action_valorado_dolares" model="ir.actions.act_window">
+            <field name="name">Kardex Valorado</field>
+            <field name="res_model">make.kardex.valorado</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_make_kardex_valorado"/>
+            <field name="target">new</field>
+            <field name="context">{'tipo':'valorado','form_view_ref': 'view_make_kardex_valorado','default_moneda':'usd', 'type_product':'product'}</field>
+        </record>
+
+        <menuitem name="Kardex Valorado Dolares" id="kardex_sunat_val_menu_fisicovaloradodolares"
+                 parent="kardex_menu_master.menu_kardex_informe_kardex_master" action="make_kardex_action_valorado_dolares"
+                 sequence="9" />
+
+
+
+
+    </data>
+</odoo>

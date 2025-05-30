@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="stock_warehouse_restriction_group" model="res.groups">
+            <field name="name">Permite Modificar Almacén</field>
+            <field name="comment">Grupo que permite crear/modificar almacenes.</field>
+        </record>
+        <record id="stock_picking_type_restriction_group" model="res.groups">
+            <field name="name">Permite Modificar Operación</field>
+            <field name="comment">Grupo que permite crear/modificar los tipos de operaciones.</field>
+        </record>
+        <record id="stock_location_restriction_group" model="res.groups">
+            <field name="name">Permite Modificar Ubicaciones</field>
+            <field name="comment">Grupo que permite crear/modificar las ubicaciones.</field>
+        </record>
+    </data>
+</odoo>

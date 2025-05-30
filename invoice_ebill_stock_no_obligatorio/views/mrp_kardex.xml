@@ -1,0 +1,44 @@
+<odoo>
+	<data>
+		<record id="res_config_settings_automatic_s_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.automatic.s.view.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+		    
+                <xpath expr="//app[@name='account']" position="inside">
+			
+                            <setting id="origen_nro_compra" string="Origen Compra Automatico" help="Permite Que El Campo Origen - Nro. De Compra Viaje De Manera Automática">
+                                <field name="origen_nro_compra"/>
+                            </setting>
+			
+                            <setting id="etiqueta_lote" string="Lote en etiqueta" help="Permite Que El Campo Etiqueta Se Añada El Lote Que Viaja De Manera Automática">
+                                <field name="etiqueta_lote"/>
+                            </setting>			
+                </xpath>
+            </field>
+        </record>
+
+		<record id="res_config_settings_automatic_stock_s_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.automatic.stock.s.view.form</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+
+		    
+                <xpath expr="//app[@name='stock']" position="inside">
+			
+                            <setting id="descript_move_l" string="Lote en Albaran" help="Si esta marcado, Significa que El Lote Figurara En La Descripción De Operación Del Albaran.">
+                                <field name="descript_move_l"/>
+                            </setting>
+			
+                            <setting id="fecha_caducidad" string="Fecha Caudicdad en Albaran" help="Si esta marcado, Significa que La Fecha de Caducidad de los Lotes Figurara En La Descripción De Operación Del Albaran.">
+                                <field name="fecha_caducidad"/>
+                            </setting>			
+                </xpath>
+
+		    
+            </field>
+        </record>
+	</data>
+</odoo>

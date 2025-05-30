@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="type_operation_1" model="type.operation.kardex">
+        <field name="name">VENTA NACIONAL</field>
+        <field name="code">01</field>
+    </record>
+    <record id="type_operation_2" model="type.operation.kardex">
+        <field name="name">COMPRA NACIONAL</field>
+        <field name="code">02</field>
+    </record>
+    <record id="type_operation_5" model="type.operation.kardex">
+        <field name="name">DEVOLUCION RECIBIDA </field>
+        <field name="code">05</field>
+    </record>
+    <record id="type_operation_6" model="type.operation.kardex">
+        <field name="name">DEVOLUCION ENTREGADA </field>
+        <field name="code">06</field>
+    </record>
+    <record id="type_operation_11" model="type.operation.kardex">
+        <field name="name">SALIDA POR TRANSFERENCIA ENTRE ALMACENES</field>
+        <field name="code">11</field>
+    </record>
+    <record id="type_operation_21" model="type.operation.kardex">
+        <field name="name">ENTRADA POR TRANSFERENCIA ENTRE ALMACENES </field>
+        <field name="code">21</field>
+    </record>
+    
+</odoo>

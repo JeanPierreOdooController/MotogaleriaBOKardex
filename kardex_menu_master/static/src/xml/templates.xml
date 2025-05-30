@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="kardex_menu_master.KardexMasterPro">
+
+        <t t-set="info" t-value="this.getInfo()"/>
+        <div  style="color:white; width:100%">
+
+          <div class="row">
+              <h1 style="width:100%">
+                <center>
+                  <t t-esc="info.company_id"/> - ANALISIS DEL KARDEX
+                </center>
+              </h1>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-6" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                  <table>
+                    <tr>
+                      <th style="width:50%;color: #28a2bd"><b><i class="fa fa-calendar-check-o"></i> Inicio de Operación</b></th>
+                      <th style="width:50%;color: #28a2bd"><b><i class="fa fa-calendar-check-o"></i> Ultima fecha de Operación</b></th>
+                    </tr>
+                    <tr>
+
+
+                    </tr>
+                    <tr>
+                      <th style="width:50%;color: #28a2bd"><b><i class="fa fa-calendar-check-o"></i> Ultimo Mes Cerrado</b></th>
+                      <th style="width:50%;color: #28a2bd"><b><i class="fa fa-calendar-check-o"></i> Mes en Curso</b></th>
+                    </tr>
+                    <tr>
+
+
+                    </tr>
+                    <tr>
+                      <th style="width:50%;color: #28a2bd"><b><i class="fa fa-calendar-check-o"></i> Ultima Actualización del Reporte</b></th>
+                      <th style="width:50%;color: #28a2bd"><b><i class="fa fa-archive"></i> Almacenes Consultados</b></th>
+                    </tr>
+                    <tr>
+
+
+                    </tr>
+                  </table>
+              </center>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-6" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top" style="color: #28a2bd;"><b><i class="fa fa-area-chart"></i> Operaciones Desde Inicio de Operacion - Hasta Mes Cerrado</b></span>
+                  <table>
+                    <tr>
+                      <th style="width:30%">Tipo Ope.</th>
+                      <th style="width:30%">Nro. Mov.</th>
+                      <th style="width:30%">Costo/Precio</th>
+                      <th style="width:10%"></th>
+                    </tr>
+                    <tr>
+                      <td>Compras</td>
+
+
+                      <td style="text-align: end;"><a href='#' t-on-click.stop="(ev) => this.onInfoClick(ev)" ><b><i id='view_compra_anual' style="color: sandybrown;" class="fa fa-search"></i></b></a></td>
+                      
+                    </tr>
+                  </table>
+              </center>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-6" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top" style="color: #28a2bd;"><b><i class="fa fa-area-chart"></i> Operaciones de  <t t-esc="month_now"/></b></span>
+                
+                  <table>
+                    <tr>
+                      <th style="width:30%">Tipo Ope.</th>
+                      <th style="width:30%">Nro. Mov.</th>
+                      <th style="width:30%">Costo/Precio</th>
+                      <th style="width:10%"></th>
+                    </tr>
+                  </table>
+              </center>
+            </div>
+            
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-shopping-cart"></i><b> Tiempo de ciclo de entregas</b></span>
+                
+              </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-shopping-cart"></i><b> Tiempo de ciclo de recepciones</b></span>
+                
+              </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-shopping-cart"></i> <b>Retrasos en la entregas</b></span>
+                
+              </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-shopping-cart"></i> <b>Retraso de recepciones</b></span>
+                
+              </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-line-chart"></i> <b>Rotación de Inventario</b></span>
+                
+              </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-money"></i> <b>Valor de inventario</b></span>
+                
+              </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-money"></i> <b>Valor del inventario Saliente</b></span>
+                
+              </center>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-3 col-3" style="background-color: #714b67;border: double;border-color: #c3c3c3;padding: 15px;margin: 0px;color: white;">
+              <center>
+                <span class="count_top"><i class="fa fa-money"></i> <b>Valor del inventario entrante</b></span>
+                
+              </center>
+            </div>
+
+          </div>
+
+
+
+      <div class="o_content" style="padding-top: 25px;"><div class="o_kanban_view o_kanban_kardex_save o_emphasize_colors o_kanban_ungrouped"><div class="oe_kanban_global_click oe_kanban_color_1 o_kanban_record" modifiers="{}" tabindex="0" role="article">
+                                <div class="row" modifiers="{}">
+                                    <div class="col-12" modifiers="{}">
+                                        <center modifiers="{}"><strong modifiers="{}">Kardex Periodo <span><t t-esc='info.numero'/></span></strong></center>
+                                    </div>
+                                    <div class="col-12 text-left" modifiers="{}">
+                                        Fecha Actualización:<span class="badge badge-pill" modifiers="{}"></span>
+                                    </div>
+                                    <div class="col-12 text-left" modifiers="{}">
+                                        Estado:<span class="badge badge-pill" modifiers="{}">Borrador</span>
+                                    </div>
+                                </div>
+                            </div><div class="o_kanban_record o_kanban_ghost"></div><div class="o_kanban_record o_kanban_ghost"></div><div class="o_kanban_record o_kanban_ghost"></div><div class="o_kanban_record o_kanban_ghost"></div><div class="o_kanban_record o_kanban_ghost"></div><div class="o_kanban_record o_kanban_ghost"></div></div></div>
+
+
+        </div>
+
+    </t>
+
+</templates>

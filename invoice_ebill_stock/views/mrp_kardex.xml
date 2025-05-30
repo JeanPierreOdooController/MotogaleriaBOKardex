@@ -1,0 +1,34 @@
+<odoo>
+	<data>
+
+
+		<record model="ir.ui.view" id="view_move_form_lt_purchase">
+			<field name="name">account.move</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form"/>
+			<field name="arch" type="xml">
+				<xpath expr="//sheet//group//field[@name='delivery_date']" position="after">
+					<field name="purchase_ebill" readonly="0" />
+				</xpath>
+				<xpath expr="//notebook//field[@name='invoice_line_ids']//tree//field[@name='quantity']" position="after">
+					<field name="lot_ids" readonly="0" />
+				</xpath>
+			</field>
+		</record>
+
+
+
+		<record model="ir.ui.view" id="view_picking_form_lt_purchase">
+			<field name="name">stock.picking</field>
+			<field name="model">stock.picking</field>
+			<field name="inherit_id" ref="stock.view_picking_form"/>
+			<field name="arch" type="xml">
+				<field name="origin" position="after">
+					<field name="nro_guia_compra" />					
+				</field>
+			</field>
+		</record>
+
+
+	</data>
+</odoo>
