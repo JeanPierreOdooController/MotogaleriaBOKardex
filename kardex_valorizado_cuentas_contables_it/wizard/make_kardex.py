@@ -355,7 +355,8 @@ select
 				'' as ctanalitica,
 				0 as stock_moveid,
 				'' as pedido,
-    				spt.id as lot_id
+    			CASE WHEN coalesce(pt.check_unidad_especifica,false)=true then 	spt.id else null::integer end as lot_id
+
 
 			from kardex_save_period ksp 
 			inner join stock_location sl on sl.id = ksp.almacen
@@ -870,7 +871,7 @@ select
 				sl.complete_name as almacen,
 				'' as ctanalitica,
 				0 as stock_moveid,
-    				spt.id as lot_id
+    			CASE WHEN coalesce(pt.check_unidad_especifica,false)=true then 	spt.id else null::integer end as lot_id
 
 			from kardex_save_period ksp 
 			inner join stock_location sl on sl.id = ksp.almacen
