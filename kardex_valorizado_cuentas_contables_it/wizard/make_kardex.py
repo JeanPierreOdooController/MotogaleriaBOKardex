@@ -698,7 +698,7 @@ select
 
 			linea.append( l['product_id'] if l['product_id'] else '' )
 			linea.append( l['pedido'] if l['pedido'] else '' )
-			lote = self.env['stock.production.lot'].browse( l['lot_id'] )
+			lote = self.env['stock.lot'].browse( l['lot_id'] )
 			if lote:
 				linea.append( lote.name )
 			else:
