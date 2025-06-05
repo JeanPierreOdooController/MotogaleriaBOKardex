@@ -1194,7 +1194,7 @@ select
 					'pedido_compra':'',
 					'licitacion':'',
 					'doc_almac':'',
-					'lote':self.env['stock.production.lot'].sudo().browse(l['lot_id']).name if l['lot_id'] else '',
+					'lote':self.env['stock.lot'].sudo().browse(l['lot_id']).name if l['lot_id'] else '',
 					'correlativovisual':0,
 					})
 
