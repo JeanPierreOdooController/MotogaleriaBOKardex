@@ -169,8 +169,8 @@ select
 				'' as origen,
 				sl.complete_name as destino,
 				sl.complete_name as almacen,
-				null::integer as stock_moveid,
-				ksp.lote as lot_id
+				null::integer as stock_moveid,				
+    			CASE WHEN coalesce(pt.check_unidad_especifica,false)=true then 	spt.id else null::integer end as lot_id
 
 			from kardex_save_period ksp 
 			inner join stock_location sl on sl.id = ksp.almacen
@@ -499,7 +499,8 @@ select
 				sl.complete_name as destino,
 				sl.complete_name as almacen,
 				null::integer as stock_moveid,
-				spt.id as lot_id
+				
+    			CASE WHEN coalesce(pt.check_unidad_especifica,false)=true then 	spt.id else null::integer end as lot_id
 
 			from kardex_save_period ksp 
 			inner join stock_location sl on sl.id = ksp.almacen
