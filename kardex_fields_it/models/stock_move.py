@@ -88,10 +88,29 @@ def write_history(self,message):
 
 
 class StockMove(models.Model):
-	_inherit = 'stock.move'
+	_inherit = ['stock.move']
+	
+	analytic_distribution = fields.Json(
+		string='Distribución Analítica'
+	)
+	analytic_precision = fields.Integer(default=2)
 
-	analytic_account_id = fields.Many2one('account.analytic.account', string=u'Cuenta Analítica')
+	analytic_account_id = fields.Many2one(
+		'account.analytic.account',
+		string='Cuenta Analítica'
+	)
 
+	@api.model_create_multi
+	def create(self, vals_list):
+		for vals in vals_list:
+			purchase_line_id = vals.get('purchase_line_id')
+			if purchase_line_id:
+				purchase_line = self.env['purchase.order.line'].browse(purchase_line_id)
+
+				# Copiar distribución analítica (campo JSON del mixin)
+				if purchase_line.analytic_distribution and not vals.get('analytic_distribution'):
+					vals['analytic_distribution'] = purchase_line.analytic_distribution.copy()
+		return super().create(vals_list)
 
 
 class sql_kardex(models.Model):
