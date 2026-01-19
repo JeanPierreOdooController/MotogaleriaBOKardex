@@ -26,6 +26,7 @@
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='product_uom']" position="after">
 					<field name="analytic_account_id" optional="show"/>
+					<field name="analytic_distribution" widget="analytic_distribution" optional="show"/>
 				</xpath>
 			</field>
 		</record>
