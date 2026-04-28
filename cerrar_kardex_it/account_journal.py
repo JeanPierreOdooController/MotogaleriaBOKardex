@@ -131,6 +131,8 @@ class stock_move(models.Model):
 
 	
 	def write(self,vals):
+		for i in self:
+			i.verifycrd('WriteSM',str(vals))
 		m = super(stock_move,self).write(vals)
 		for i in self:
 			i.verifycrd('WriteSM',str(vals))
